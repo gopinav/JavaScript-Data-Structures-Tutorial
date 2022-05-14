@@ -1,1 +1,1 @@
-Source code related to the JavaScript Algorithms tutorial series on YouTube
+Source code related to the JavaScript Algorithms tutorial series on YouTube.
