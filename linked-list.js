@@ -46,52 +46,40 @@ class LinkedList {
 
   insert(value, index) {
     if (index < 0 || index > this.size) {
-      console.log(
-        `Cannot insert at index ${index} for list of size ${this.size}`
-      );
+      return;
+    }
+    if (index === 0) {
+      this.prepend(value);
     } else {
-      if (index === 0) {
-        this.prepend(value);
-      } else {
-        const node = new Node(value);
-        let curr = this.head;
-        let prev = null;
-        let i = 0;
-        while (i < index) {
-          prev = curr;
-          curr = curr.next;
-          i++;
-        }
-        prev.next = node;
-        node.next = curr;
-        this.size++;
+      const node = new Node(value);
+      let prev = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        prev = prev.next;
       }
+      node.next = prev.next;
+      prev.next = node;
+      this.size++;
     }
   }
 
   removeFrom(index) {
-    let value;
-    if (this.isEmpty() || index < 0 || index > this.size) {
+    if (index < 0 || index > this.size) {
       return null;
-    } else {
-      if (index === 0) {
-        value = this.head.value;
-        this.head = this.head.next;
-      } else {
-        let i = 0;
-        let curr = this.head;
-        let prev = null;
-        while (i < index - 1) {
-          prev = curr;
-          curr = curr.next;
-          i++;
-        }
-        value = curr.value;
-        prev.next = curr.next;
-      }
-      this.size--;
     }
-    return value;
+    let removedNode;
+    if (index === 0) {
+      removedNode = this.head;
+      this.head = this.head.next;
+    } else {
+      let prev = this.head;
+      for (let i = 0; i < index - 1; i++) {
+        previous = previous.next;
+      }
+      removedNode = prev.next;
+      prev.next = removedNode.next;
+    }
+    this.size--;
+    return removedNode.value;
   }
 
   removeElement(value) {
