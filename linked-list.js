@@ -64,8 +64,8 @@ class LinkedList {
         }
         prev.next = node;
         node.next = curr;
+        this.size++;
       }
-      this.size++;
     }
   }
 
@@ -156,7 +156,7 @@ class LinkedList {
       let curr = this.head;
       let list = "";
       while (curr) {
-        list += `${curr.value} `;
+        list += `${curr.value}->`;
         curr = curr.next;
       }
       console.log(list);
@@ -164,7 +164,6 @@ class LinkedList {
   }
 }
 
-const l = new LinkedList();
 console.log(l.isEmpty());
 l.append(50);
 l.prepend(20);
