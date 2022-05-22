@@ -82,29 +82,29 @@ class LinkedList {
     return removedNode.value;
   }
 
-  removeElement(value) {
+  removeValue(value) {
     if (this.isEmpty()) {
-      return;
-    } else {
-      if (this.head.value === value) {
-        if (!this.head.next) {
-          this.head = null;
-        } else {
-          this.head = this.head.next;
-        }
+      return null;
+    }
+    if (this.head.value === value) {
+      if (!this.head.next) {
+        this.head = null;
       } else {
-        let curr = this.head;
-        let prev = null;
-        while (curr && curr.value !== value) {
-          prev = curr;
-          curr = curr.next;
-        }
-        if (!curr) {
-          return;
-        }
-        prev.next = curr.next;
+        this.head = this.head.next;
       }
       this.size--;
+      return value;
+    } else {
+      let prev = this.head;
+      while (prev.next && prev.next.value !== value) {
+        prev = prev.next;
+      }
+      if (prev.next) {
+        prev.next = prev.next.next;
+        this.size--;
+        return value;
+      }
+      return null;
     }
   }
 
@@ -124,12 +124,11 @@ class LinkedList {
     return -1;
   }
 
-  reverseList() {
+  reverse() {
     let prev = null;
-    let next = null;
     let curr = this.head;
     while (curr) {
-      next = curr.next;
+      let next = curr.next;
       curr.next = prev;
       prev = curr;
       curr = next;
@@ -159,13 +158,13 @@ l.append(80);
 l.insert(60, 2);
 console.log(l.getSize());
 l.print();
-l.reverseList();
+l.reverse();
 l.print();
 console.log(l.search(60));
 l.removeFrom(4);
 console.log(l.getSize());
 l.print();
-l.removeElement(80);
+l.removeValue(80);
 l.print();
 console.log(l.getSize());
 l.print();
