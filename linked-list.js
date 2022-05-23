@@ -63,7 +63,7 @@ class LinkedList {
   }
 
   removeFrom(index) {
-    if (index < 0 || index > this.size) {
+    if (index < 0 || index >= this.size) {
       return null;
     }
     let removedNode;
@@ -73,7 +73,7 @@ class LinkedList {
     } else {
       let prev = this.head;
       for (let i = 0; i < index - 1; i++) {
-        previous = previous.next;
+        prev = prev.next;
       }
       removedNode = prev.next;
       prev.next = removedNode.next;
@@ -150,6 +150,8 @@ class LinkedList {
     }
   }
 }
+
+const l = new LinkedList();
 
 console.log(l.isEmpty());
 l.append(50);
