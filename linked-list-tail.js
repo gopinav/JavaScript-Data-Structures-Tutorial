@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-export class LinkedList {
+class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -103,6 +103,10 @@ export class LinkedList {
   }
 }
 
+module.exports = LinkedList;
+
+/** Uncomment when testing only this file */
+/**
 const list = new LinkedList();
 list.append(1);
 list.append(2);
@@ -114,3 +118,4 @@ list.removeFromFront();
 list.print();
 list.removeFromEnd();
 list.print();
+*/
