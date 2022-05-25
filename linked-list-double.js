@@ -86,6 +86,20 @@ class DoublyLinkedList {
       console.log(list);
     }
   }
+
+  printReverse() {
+    if (this.isEmpty()) {
+      console.log("List is empty");
+    } else {
+      let curr = this.tail;
+      let list = "";
+      while (curr) {
+        list += `${curr.value}<->`;
+        curr = curr.prev;
+      }
+      console.log(list);
+    }
+  }
 }
 
 const list = new DoublyLinkedList();
@@ -94,6 +108,7 @@ list.append(2);
 list.append(3);
 list.prepend(0);
 list.print();
+list.printReverse();
 list.removeFromEnd();
 list.print();
 list.removeFromFront();
