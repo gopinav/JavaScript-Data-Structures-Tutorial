@@ -87,11 +87,7 @@ class LinkedList {
       return null;
     }
     if (this.head.value === value) {
-      if (!this.head.next) {
-        this.head = null;
-      } else {
-        this.head = this.head.next;
-      }
+      this.head = this.head.next;
       this.size--;
       return value;
     } else {
@@ -100,7 +96,8 @@ class LinkedList {
         prev = prev.next;
       }
       if (prev.next) {
-        prev.next = prev.next.next;
+        removedNode = prev.next;
+        prev.next = removedNode.next;
         this.size--;
         return value;
       }
