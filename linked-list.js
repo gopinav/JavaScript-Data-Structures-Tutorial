@@ -9,6 +9,7 @@ class LinkedList {
   constructor() {
     this.head = null;
     this.size = 0;
+    this.pinter = null;
   }
 
   isEmpty() {
@@ -32,16 +33,15 @@ class LinkedList {
 
   append(value) {
     const node = new Node(value);
+
     if (this.isEmpty()) {
       this.head = node;
+      this.pinter = node;
     } else {
-      let curr = this.head;
-      while (curr.next) {
-        curr = curr.next;
-      }
-      curr.next = node;
+      this.pinter.next = node;
     }
-    this.size++;
+    this.pinter = node;
+    ++this.size;
   }
 
   insert(value, index) {
